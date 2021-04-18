@@ -34,9 +34,9 @@ func main() {
 	val := Values{0, 0, 0, 0}
     
 	fmt.Print("Enter 1st number: ") 
-	fmt.Scanf("%d",&val{Num1}) 			//?
+	fmt.Scanf("%d",&val.Num1) 			
 	fmt.Print("Enter 2nd number: ") 
-	fmt.Scanf("%d",&val{Num2})			//?
+	fmt.Scanf("%d",&val.Num2)			
 
     
     fmt.Println("1: Addition") 
@@ -46,8 +46,19 @@ func main() {
 
 
     fmt.Print("Enter choice: ") 
-    fmt.Scanf("%d",&val{Choice}) 		//?
+    fmt.Scanf("%d",&val.Choice) 		
 
 	
 	val.calculate()
 }
+
+
+// ramin@raminhost:~/go/src/Geekbrains/Go1/les6 (les6_branch)$ go run calc_struct.go 
+// Enter 1st number: 5
+// Enter 2nd number: 6
+// 1: Addition
+// 2: Subtraction
+// 3: Multiplication
+// 4: Division
+// Enter choice: 3
+// Multiplication is: 30
