@@ -11,6 +11,12 @@ type Eval interface {
 	calculatePositive()
 }
 
+type ValuesFloat struct {
+	Numfl1, Numfl2 float64 
+	Choicefl float64
+	Resultfl float64
+}
+
 type Values struct {
 	Num1, Num2 int
 	Choice int
@@ -37,21 +43,21 @@ func(v *Values) calculateInt() {
 }
 
 
-func(v *Values) calculateFloat() {
+func(v *ValuesFloat) calculateFloat() {
 	
-	switch v.Choice{ 
+	switch v.Choicefl{ 
 		case 1: 
-			v.Result=v.Num1+v.Num2
-			fmt.Printf("Addition 'Float' is: %d\n",v.Result) 
+			v.Resultfl=v.Numfl1+v.Numfl2
+			fmt.Printf("Addition 'Float' is: %d\n",v.Resultfl) 
 		case 2: 
-			v.Result=v.Num1-v.Num2
-			fmt.Printf("Subtraction 'Float' is: %d\n",v.Result) 
+			v.Resultfl=v.Numfl1-v.Numfl2
+			fmt.Printf("Subtraction 'Float' is: %d\n",v.Resultfl) 
 		case 3: 
-			v.Result=v.Num1*v.Num2
-			fmt.Printf("Multiplication 'Float' is: %d\n",v.Result) 
+			v.Resultfl=v.Numfl1*v.Numfl2
+			fmt.Printf("Multiplication 'Float' is: %d\n",v.Resultfl) 
 		case 4: 
-			v.Result=v.Num1/v.Num2
-			fmt.Printf("Division 'Float' is: %d\n",v.Result) 
+			v.Resultfl=v.Numfl1/v.Numfl2
+			fmt.Printf("Division 'Float' is: %d\n",v.Resultfl) 
 		default:  
 			fmt.Println("Invalid value") 
 	}  
@@ -84,8 +90,8 @@ func(v *Values) calculatePositive() {
 
 func main() {
 
-	var val = &Values{}
-    	
+	var val = &Values{}	
+	var valFl = &ValuesFloat{}
 
 	fmt.Print("Enter 1st number: ") 
 	fmt.Scanf("%d",&val.Num1) 			
@@ -104,7 +110,7 @@ func main() {
 
 	if val.Num1 > 0 && val.Num2 > 0 {
 		val.calculatePositive()
-		if reflect.TypeOf(val.Num1) != reflect.TypeOf(float64(val.Num1)) && reflect.TypeOf(val.Num2) != reflect.TypeOf(float64(val.Num2)) {
+		if val.Num1%1==0 && val.Num1%2==0 {
 			val.calculateInt()
 		} else {
 			val.calculateFloat()
