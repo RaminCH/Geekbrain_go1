@@ -6,7 +6,7 @@ import (
 
 type Eval interface {
 	calculateInt()
-	calculateFloat()
+	// calculateFloat()
 	calculatePositive()
 }
 
@@ -87,18 +87,28 @@ func(v *Values) calculatePositive() {
 	}
 } 
 
+func measure(e Eval) {
+	fmt.Println(e)
+	e.calculateInt()
+	// e.calculateFloat()
+	e.calculatePositive()
+}
+
 func main() {
 
-	var val = &Values{}
+	val := &Values{Num1: 5, Num2: 6}							//for ints
+	// var valfl = &ValuesFloat{Num1: 5.2, Num2: 6.7}			//for float
+
+	measure(val)
 
 	// var i interface{} = val
 	// _, ii := i.(Eval)
 	// fmt.Println("Result is: ",ii)  // Result is: False
 
-	var funcs = []Eval{
-		&Values{Num1: 5, Num2: 6},	
-		&ValuesFloat{Num1: 5.2, Num2: 6.7},
-	}
+	// var funcs = []Eval{
+	// 	&Values{Num1: 5, Num2: 6},	
+	// 	&ValuesFloat{Num1: 5.2, Num2: 6.7},
+	// }
 
 
 
@@ -111,10 +121,10 @@ func main() {
     fmt.Print("Enter choice: ") 
     fmt.Scanf("%d",&val.Choice) 
 
-	for _, row := range funcs {
-		row.calculateInt()
-		row.calculatePositive()
-		row.calculateFloat()
-	}
+	// for _, row := range funcs {
+	// 	row.calculateInt()
+	// 	row.calculatePositive()
+	// 	row.calculateFloat()
+	// }
 		
 }
