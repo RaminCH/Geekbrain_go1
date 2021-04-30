@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"log"
 )
 
 type Eval interface {
 	calculate()
 	// calculateFloat()
-	calculatePositive()
+	// calculatePositive()
 }
 
 type ValuesFloat struct {
@@ -109,18 +110,16 @@ func (v *ValuesFloat) calculatePositive() {
 }
 func measure(e Eval) {
 	fmt.Println(e)
-	e.calculatePositive()
+	e.calculate()
+	// e.calculatePositive()
 	// e.calculateFloat()
-	e.calculatePositive()
+	// e.calculatePositive()
 }
 
 func main() {
 
-	val := &Values{Num1: 5, Num2: 6}            //for ints
-	valfl := &ValuesFloat{Num1: 5.2, Num2: 6.7} //for float
-
-	measure(val)
-	measure(valfl)
+	// val := &Values{Num1: 5, Num2: 6, Choice: 1}            //for ints
+	// valfl := &ValuesFloat{Num1: 5.2, Num2: 6.7, Choice: 1} //for float
 
 	// var i interface{} = val
 	// _, ii := i.(Eval)
@@ -131,13 +130,27 @@ func main() {
 	// 	&ValuesFloat{Num1: 5.2, Num2: 6.7},
 	// }
 
+	valInt := &Values{}
+	valFl := &ValuesFloat{}
 	fmt.Println("1: Addition")
 	fmt.Println("2: Subtraction")
 	fmt.Println("3: Multiplication")
 	fmt.Println("4: Division")
 
-	fmt.Print("Enter choice: ")
-	fmt.Scanf("%d", &val.Choice)
+	fmt.Print("Enter choice for Int: ")
+	_, err := fmt.Scan(&valInt.Num1, &valInt.Choice, &valInt.Num2)
+	if err != nil {
+		log.Println(err)
+	}
+
+	fmt.Print("Enter choice for Float: ")
+	_, err = fmt.Scan(&valFl.Num1, &valFl.Choice, &valFl.Num2)
+	if err != nil {
+		log.Println(err)
+	}
+
+	measure(valInt)
+	measure(valFl)
 
 	// for _, row := range funcs {
 	// 	row.calculateInt()
